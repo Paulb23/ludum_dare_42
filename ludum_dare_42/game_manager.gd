@@ -17,6 +17,10 @@ func _ready() -> void:
 	$music/theme_1.play()
 	_reset()
 
+func _physics_process(delta : float) -> void:
+	if (Input.is_action_just_pressed("reset")):
+		_reset()
+
 func _reset() -> void:
 	$level.reload_level()
 	var start_tile = $level.get_start_tile()
