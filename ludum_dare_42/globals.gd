@@ -1,8 +1,9 @@
 extends Node2D
 
-const screen_width := 256
-const screen_height := 144
-const tile_size := 16
+const screen_width := 480
+const screen_height := 240
+const tile_width := 32
+const tile_height := 16
 
 var varibles := {}
 
@@ -27,7 +28,8 @@ func set_screen_res(width : int, height : int) -> void:
 func set_globals() -> void :
 	Globals.set("SCREEN_WIDTH", screen_width)
 	Globals.set("SCREEN_HEIGHT", screen_height)
-	Globals.set("TILE_SIZE", tile_size)
+	Globals.set("TILE_WIDTH", tile_width)
+	Globals.set("TILE_HEIGHT", tile_height)
 
 func set(name : String, value) -> void:
 	varibles[name] = value

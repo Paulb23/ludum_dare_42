@@ -1,11 +1,14 @@
 extends Node2D
 
+var current_level : int = 0
+
 var levels = [
-	"res://levels/level_1.tscn"
+	"res://levels/level_1.tscn",
+	"res://levels/level_2.tscn"
 ]
 
 func _ready() -> void:
-	$level.load_level(levels[0])
+	$level.load_level(levels[current_level])
 	$player.set_level($level)
 	$player.connect("fallen", self, "_reset")
 	$player.connect("end", self, "_end")
@@ -19,4 +22,6 @@ func _reset() -> void:
 
 func _end():
 	if ($level.all_tiles_removed()):
+		current_level+=1
+		$level.load_level(levels[current_level])
 		_reset()
