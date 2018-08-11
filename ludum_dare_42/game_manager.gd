@@ -44,9 +44,12 @@ func _reset() -> void:
 
 func _end():
 	if ($level.all_tiles_removed()):
+		$player.can_move = false
+		$load.play()
 		current_level+=1
 
 		if (current_level >= levels.size()):
+			yield($load, "finished")
 			Globals.set_scene("res://menus/game_win.tscn")
 			return
 
