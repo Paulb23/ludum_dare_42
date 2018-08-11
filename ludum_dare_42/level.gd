@@ -1,5 +1,9 @@
 extends Node2D
 
+const START_TILE_ID = 1
+const END_TILE_ID = 2
+const DOUBLE_TILE_ID = 3
+
 var current_level
 
 var old_tile_map : TileMap
@@ -45,6 +49,19 @@ func get_start_tile() -> Array:
 	var start_tile : Array = current_tile_map.get_used_cells_by_id(1)
 	assert(start_tile.size() > 0)
 	return start_tile
+
+func remove_tile(tile : Vector2) -> void:
+	if (not current_tile_map):
+		return
+	var tile_id : int = get_tile_id(tile)
+	if (tile_id == DOUBLE_TILE_ID):
+		var meta = String(tile.x) + String(tile.y)
+		if (not current_tile_map.has_meta(meta)):
+			current_tile_map.set_meta(meta, true)
+			return
+
+	if (tile_id != START_TILE_ID and tile_id != END_TILE_ID):
+		set_tile_id(tile, -1)
 
 func get_tile_id(coordinates : Vector2) -> int:
 	if (not current_tile_map):

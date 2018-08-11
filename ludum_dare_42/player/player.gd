@@ -203,5 +203,6 @@ func get_tile_id(coordinates : Vector2) -> int:
 	return 	level.get_tile_id(coordinates)
 
 func remove_tile(tile : Vector2) -> void:
-	if (level and get_tile_id(tile) != 1 and get_tile_id(tile) != 2):
-		level.set_tile_id(tile, -1)
+	if (not level):
+		return
+	level.remove_tile(tile)
