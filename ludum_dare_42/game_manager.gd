@@ -30,5 +30,11 @@ func _reset() -> void:
 func _end():
 	if ($level.all_tiles_removed()):
 		current_level+=1
+
+		print(levels.size())
+		if (current_level >= levels.size()):
+			Globals.set_scene("res://menus/game_win.tscn")
+			return
+
 		$level.load_level(levels[current_level])
 		_reset()
