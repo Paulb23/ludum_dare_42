@@ -25,10 +25,13 @@ func _ready() -> void:
 func _physics_process(delta : float) -> void:
 	if (Input.is_action_just_pressed("reset")):
 		_reset()
+	if (Input.is_action_just_pressed("pause")):
+		$pause_menu.display()
+		get_tree().paused = true
 
 func _input(event : InputEvent) -> void:
 	if (event is InputEventKey and not event.is_echo() and event.is_pressed() and event.scancode == KEY_N):
-		current_level+=1
+		current_level += 1
 
 		if (current_level >= levels.size()):
 			Globals.set_scene("res://menus/game_win.tscn")
@@ -43,11 +46,11 @@ func _reset() -> void:
 	assert(start_tile.size() > 0)
 	$player.set_start_tile(start_tile.pop_back())
 
-func _end():
+func _end() -> void:
 	if ($level.all_tiles_removed()):
 		$player.can_move = false
 		$load.play()
-		current_level+=1
+		current_level += 1
 
 		if (current_level >= levels.size()):
 			yield($load, "finished")

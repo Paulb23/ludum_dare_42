@@ -3,6 +3,8 @@
 [ext_resource path="res://sounds/music/theme_1.wav" type="AudioStream" id=1]
 
 [node name="music" type="Node2D"]
+pause_mode = 2
+_sections_unfolded = [ "Pause", "Script" ]
 
 [node name="theme_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
