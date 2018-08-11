@@ -11,7 +11,6 @@ var switched_tiles = {
 }
 
 func switch_pressed(tile: Vector2) -> void:
-	print(tile)
 	if (not switched_tiles.has(tile)):
 		return
 

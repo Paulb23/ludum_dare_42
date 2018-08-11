@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://menus/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Schluber.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/8-BIT WONDER.TTF" type="DynamicFontData" id=3]
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=4]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/music/menu_music.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -294,4 +295,13 @@ scrollable = true
 tick_count = 0
 ticks_on_borders = true
 focus_mode = 2
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -25.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Music"
 
