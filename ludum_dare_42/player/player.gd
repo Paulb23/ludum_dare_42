@@ -56,6 +56,7 @@ func _physics_process(delta : float) -> void:
 				if (get_tile_id(Vector2(current_tile.x + 1, current_tile.y)) == -1):
 					falling = true
 		if (falling):
+			$sfx/fall_off.play()
 			emit_signal("fallen")
 			return
 

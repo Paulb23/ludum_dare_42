@@ -1,25 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://sounds/sfx/move_1.wav" type="AudioStream" id=1]
 [ext_resource path="res://sounds/sfx/move_2.wav" type="AudioStream" id=2]
+[ext_resource path="res://sounds/sfx/fall_off.wav" type="AudioStream" id=3]
 
 [node name="sfx" type="Node2D"]
 
 [node name="move_1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -30.0
+volume_db = -25.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false
 mix_target = 0
-bus = "Master"
+bus = "SFX"
 
 [node name="move_2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -30.0
+volume_db = -25.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false
 mix_target = 0
-bus = "Master"
+bus = "SFX"
+
+[node name="fall_off" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "SFX"
 
