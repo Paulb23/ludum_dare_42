@@ -122,7 +122,7 @@ blend_times = [  ]
 
 [node name="move_delay" type="Timer" parent="."]
 process_mode = 1
-wait_time = 0.25
+wait_time = 0.2
 one_shot = true
 autostart = false
 

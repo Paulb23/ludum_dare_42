@@ -4,6 +4,7 @@ var current_level
 
 var old_tile_map : TileMap
 var current_tile_map : TileMap
+var loading : bool = false
 
 func load_level(path : String) -> void:
 	current_level = load(path)
@@ -14,6 +15,16 @@ func reload_level() -> void:
 		current_tile_map.queue_free()
 	current_tile_map = current_level.instance()
 	add_child(current_tile_map)
+	current_tile_map.position.y = 100
+	loading = true
+
+func _physics_process(delta : float) -> void:
+	if (loading):
+		current_tile_map.position.y -= 5
+
+		if (current_tile_map.position.y == 0):
+			loading = false
+
 
 func convert_world_to_map(coordinates : Vector2) -> Vector2:
 	if (not current_tile_map):

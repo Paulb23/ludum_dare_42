@@ -11,6 +11,7 @@ enum Angle {
 signal fallen
 signal end
 
+var loading : bool = true
 var falling : bool = false
 var moving : bool = false
 var can_move : bool = false
@@ -25,6 +26,15 @@ func _ready() -> void:
 	$move_delay.connect("timeout", self, "allow_movement")
 
 func _physics_process(delta : float) -> void:
+
+	if (loading):
+		var target = convert_map_to_world(start_tile)
+		if (position.y - target.y < 5):
+			position.y += 5
+		else:
+			position.y = target.y + 10
+			loading = false
+		return
 
 	if (can_move and not falling):
 		if (get_tile_id(current_tile) == -1):
@@ -163,10 +173,11 @@ func set_start_tile(start_tile : Vector2) -> void:
 	position = convert_world_to_map(start_tile)
 	position = convert_map_to_world(current_tile)
 	position.x -= 0
-	position.y += 10
+	position.y = -100
 	$AnimationPlayer.play("vertical")
 	current_angle = VERTICAL
 	falling = false
+	loading = true
 	disllow_movement()
 	$move_delay.start()
 
