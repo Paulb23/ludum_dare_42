@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://menus/r_key.png" type="Texture" id=2]
+[ext_resource path="res://menus/arrow_key.png" type="Texture" id=3]
+[ext_resource path="res://menus/esc_key.png" type="Texture" id=4]
 
 [node name="tile_map" type="TileMap"]
 position = Vector2( 0, -1 )
@@ -22,4 +25,41 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( -65519, 2, 0, 17, 0, 0, 65553, 0, 0, 131086, 1, 0, 131087, 0, 0, 131088, 0, 0, 131089, 0, 0 )
 _sections_unfolded = [ "Cell" ]
+
+[node name="info" type="Node2D" parent="."]
+position = Vector2( 16, 0 )
+
+[node name="r_key" type="Sprite" parent="info"]
+position = Vector2( 82.237, 178.474 )
+texture = ExtResource( 2 )
+
+[node name="arrow_key" type="Sprite" parent="info"]
+position = Vector2( 45.624, 178.068 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="arrow_key2" type="Sprite" parent="info"]
+position = Vector2( 40, 214.875 )
+texture = ExtResource( 3 )
+offset = Vector2( 5.63126, 0 )
+flip_v = true
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="arrow_key3" type="Sprite" parent="info"]
+position = Vector2( 82.066, 209.396 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+offset = Vector2( 5.63126, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="arrow_key4" type="Sprite" parent="info"]
+position = Vector2( 8.19235, 220.492 )
+rotation = -1.5708
+texture = ExtResource( 3 )
+offset = Vector2( 5.63126, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="esc_key" type="Sprite" parent="info"]
+position = Vector2( 8.61841, 178.239 )
+texture = ExtResource( 4 )
 
