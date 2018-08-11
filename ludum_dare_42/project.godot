@@ -13,7 +13,12 @@ _global_script_classes=[  ]
 [application]
 
 config/name="ludum_dare_42"
+run/main_scene="res://main_scene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://globals.gd"
 
 [input]
 
