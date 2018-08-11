@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/2-2box.png" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -124,4 +125,6 @@ process_mode = 1
 wait_time = 0.25
 one_shot = true
 autostart = false
+
+[node name="sfx" parent="." instance=ExtResource( 3 )]
 

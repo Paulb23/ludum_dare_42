@@ -129,6 +129,8 @@ func _physics_process(delta : float) -> void:
 				pass
 
 	if (moved):
+		var rand = int(rand_range(0, 1))
+		$sfx.get_child(rand).play()
 		position = convert_map_to_world(current_tile)
 		position.x -= 0
 		position.y += 10
