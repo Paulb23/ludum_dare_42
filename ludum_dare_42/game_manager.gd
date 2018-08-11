@@ -12,6 +12,8 @@ func _ready() -> void:
 	$player.set_level($level)
 	$player.connect("fallen", self, "_reset")
 	$player.connect("end", self, "_end")
+
+	$music/theme_1.play()
 	_reset()
 
 func _reset() -> void:
