@@ -9,6 +9,7 @@ enum Angle {
 }
 
 signal fallen
+signal end
 
 var falling : bool = false
 var moving : bool = false
@@ -147,6 +148,9 @@ func _physics_process(delta : float) -> void:
 				remove_tile(Vector2(previous_tile.x - 1, previous_tile.y))
 			DOWN:
 				remove_tile(Vector2(previous_tile.x + 1, previous_tile.y))
+
+		if (get_tile_id(current_tile) == 2):
+			emit_signal("end")
 
 func set_level(level : Node2D) ->void:
 	self.level = level
