@@ -8,7 +8,8 @@ var levels = [
 	"res://levels/level_3.tscn",
 	"res://levels/level_4.tscn",
 	"res://levels/level_5.tscn",
-	"res://levels/level_6.tscn"
+	"res://levels/level_6.tscn",
+	"res://levels/level_7.tscn"
 ]
 
 func _ready() -> void:

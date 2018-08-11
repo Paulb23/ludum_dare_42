@@ -3,6 +3,7 @@ extends Node2D
 const START_TILE_ID = 1
 const END_TILE_ID = 2
 const DOUBLE_TILE_ID = 3
+const SWITCH_TILE_ID = 4
 
 var current_level
 
@@ -41,19 +42,30 @@ func convert_map_to_world(coordinates : Vector2) -> Vector2:
 	return current_tile_map.map_to_world(coordinates)
 
 func all_tiles_removed() -> bool:
-	return current_tile_map.get_used_cells().size() == 2
+	return (current_tile_map.get_used_cells().size() - current_tile_map.get_used_cells_by_id(SWITCH_TILE_ID).size()) == 2
 
 func get_start_tile() -> Array:
 	if (not current_tile_map):
 		return Array()
-	var start_tile : Array = current_tile_map.get_used_cells_by_id(1)
+	var start_tile : Array = current_tile_map.get_used_cells_by_id(START_TILE_ID)
 	assert(start_tile.size() > 0)
 	return start_tile
+
+func moved_to(tile : Vector2) -> void:
+	if (not current_tile_map):
+		return
+	var tile_id : int = get_tile_id(tile)
+	if (tile_id == SWITCH_TILE_ID):
+		current_tile_map.switch_pressed(tile)
+		return
 
 func remove_tile(tile : Vector2) -> void:
 	if (not current_tile_map):
 		return
 	var tile_id : int = get_tile_id(tile)
+	if (tile_id == SWITCH_TILE_ID):
+		return
+
 	if (tile_id == DOUBLE_TILE_ID):
 		var meta = String(tile.x) + String(tile.y)
 		if (not current_tile_map.has_meta(meta)):

@@ -162,6 +162,19 @@ func _physics_process(delta : float) -> void:
 			DOWN:
 				remove_tile(Vector2(previous_tile.x + 1, previous_tile.y))
 
+		moved_to(current_tile)
+		match current_angle:
+			VERTICAL:
+				pass
+			RIGHT:
+				moved_to(Vector2(current_tile.x, current_tile.y - 1))
+			LEFT:
+				moved_to(Vector2(current_tile.x, current_tile.y + 1))
+			UP:
+				moved_to(Vector2(current_tile.x - 1, current_tile.y))
+			DOWN:
+				moved_to(Vector2(current_tile.x + 1, current_tile.y))
+
 		if (get_tile_id(current_tile) == 2):
 			emit_signal("end")
 
@@ -207,3 +220,8 @@ func remove_tile(tile : Vector2) -> void:
 	if (not level):
 		return
 	level.remove_tile(tile)
+
+func moved_to(tile : Vector2) -> void:
+	if (not level):
+		return
+	level.moved_to(tile)
