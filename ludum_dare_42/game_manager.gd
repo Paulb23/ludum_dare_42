@@ -4,7 +4,8 @@ var current_level : int = 0
 
 var levels = [
 	"res://levels/level_1.tscn",
-	"res://levels/level_2.tscn"
+	"res://levels/level_2.tscn",
+	"res://levels/level_3.tscn"
 ]
 
 func _ready() -> void:
