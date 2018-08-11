@@ -120,3 +120,9 @@ anims/up = SubResource( 2 )
 anims/vertical = SubResource( 1 )
 blend_times = [  ]
 
+[node name="move_delay" type="Timer" parent="."]
+process_mode = 1
+wait_time = 0.25
+one_shot = true
+autostart = false
+
