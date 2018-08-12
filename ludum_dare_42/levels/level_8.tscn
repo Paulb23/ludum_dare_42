@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tiles/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/level_8.gd" type="Script" id=2]
+
+[node name="tile_map" type="TileMap"]
+position = Vector2( 0, -1 )
+mode = 1
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 16 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = true
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -393204, 0, 0, -393203, 0, 0, -393202, 0, 0, -327668, 0, 0, -327667, 0, 0, -327666, 0, 0, -262132, 0, 0, -262131, 0, 0, -262130, 0, 0, -262125, 0, 0, -262124, 0, 0, -262123, 0, 0, -196596, 2, 0, -196595, 0, 0, -196594, 0, 0, -196593, 0, 0, -196590, 0, 0, -196589, 3, 0, -196588, 3, 0, -196587, 0, 0, -196586, 0, 0, -131053, 0, 0, -131052, 0, 0, -131051, 0, 0, -131050, 0, 0, -65517, 0, 0, -65516, 4, 0, -65515, 0, 0, -65514, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 65548, 1, 0, 65549, 0, 0, 65550, 0, 0, 65551, 4, 0, 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Cell" ]
+
