@@ -17,7 +17,11 @@ func _sfx_vol_changed(val):
 
 
 func _play():
+	$click.play()
+	yield($click, "finished")
 	Globals.set_scene("res://main_scene.tscn")
 
 func _exit():
+	$click.play()
+	yield($click, "finished")
 	get_tree().quit()

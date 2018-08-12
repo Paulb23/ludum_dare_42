@@ -1,8 +1,30 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://menus/pause_menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Schluber.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://fonts/8-BIT WONDER.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/button.gd" type="Script" id=3]
+[ext_resource path="res://fonts/8-BIT WONDER.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://sounds/sfx/button_click.wav" type="AudioStream" id=5]
+
+[sub_resource type="Shader" id=4]
+
+code = "shader_type canvas_item;
+
+void fragment()
+{
+	vec4 color = texture(TEXTURE, UV);
+	if (color.a > 0.0)
+	{
+		color.a = abs(sin(TIME));
+	}
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=5]
+
+render_priority = 0
+shader = SubResource( 4 )
+_sections_unfolded = [ "shader" ]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -31,7 +53,7 @@ outline_size = 0
 outline_color = Color( 1, 1, 1, 1 )
 use_mipmaps = true
 use_filter = false
-font_data = ExtResource( 3 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
 
 [node name="pause_menu" type="Control"]
@@ -54,6 +76,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Margin", "Pause", "Script" ]
 
 [node name="title" type="Label" parent="."]
+material = SubResource( 5 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -75,7 +98,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Custom Fonts", "Margin", "custom_fonts/font" ]
+_sections_unfolded = [ "Custom Fonts", "Margin", "Material", "custom_fonts/font" ]
 
 [node name="continue" type="Button" parent="."]
 anchor_left = 0.0
@@ -102,6 +125,7 @@ group = null
 text = "Continue"
 flat = true
 align = 1
+script = ExtResource( 3 )
 _sections_unfolded = [ "Custom Constants", "Custom Fonts", "custom_fonts/font", "shortcut" ]
 
 [node name="menu" type="Button" parent="."]
@@ -129,6 +153,7 @@ group = null
 text = "Menu"
 flat = true
 align = 1
+script = ExtResource( 3 )
 _sections_unfolded = [ "Custom Constants", "Custom Fonts", "custom_fonts/font" ]
 
 [node name="exit" type="Button" parent="."]
@@ -155,6 +180,7 @@ group = null
 text = "Exit"
 flat = true
 align = 1
+script = ExtResource( 3 )
 _sections_unfolded = [ "Custom Fonts", "custom_fonts/font" ]
 
 [node name="info_text" type="Label" parent="."]
@@ -296,4 +322,13 @@ process_mode = 1
 wait_time = 0.1
 one_shot = true
 autostart = false
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "Master"
 

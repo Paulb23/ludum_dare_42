@@ -36,14 +36,20 @@ func _sfx_vol_changed(val):
 	AudioServer.set_bus_volume_db(abs(AudioServer.get_bus_index("SFX")), val)
 
 func _continue() -> void:
+	$click.play()
+	yield($click, "finished")
 	self.rect_position = Vector2(-10000, -10000)
 	get_tree().paused = false
 	can_unpause = false
 
 func _menu() -> void:
+	$click.play()
+	yield($click, "finished")
 	get_tree().paused = false
 	can_unpause = false
 	Globals.set_scene("res://menus/main_menu.tscn")
 
 func _exit() -> void:
+	$click.play()
+	yield($click, "finished")
 	get_tree().quit()
