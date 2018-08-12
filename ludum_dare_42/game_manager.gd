@@ -43,6 +43,15 @@ func _input(event : InputEvent) -> void:
 		$level.load_level(levels[current_level])
 		_reset()
 
+	if (event is InputEventKey and not event.is_echo() and event.is_pressed() and event.scancode == KEY_B):
+		current_level -= 1
+
+		if (current_level < 0):
+			current_level = 0
+
+		$level.load_level(levels[current_level])
+		_reset()
+
 func _reset() -> void:
 	$level.reload_level()
 	var start_tile = $level.get_start_tile()
