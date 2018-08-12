@@ -23,6 +23,7 @@ func _physics_process(delta : float) -> void:
 		_continue()
 
 func display():
+	$click.play()
 	$pause_timer.start()
 	self.rect_position = Vector2(0, 0)
 
