@@ -12,7 +12,7 @@ _global_script_classes=[  ]
 
 [application]
 
-config/name="ludum_dare_42"
+config/name="block_drop"
 run/main_scene="res://menus/main_menu.tscn"
 config/icon="res://icon.png"
 
