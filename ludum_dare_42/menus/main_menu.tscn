@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://menus/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://fonts/Schluber.ttf" type="DynamicFontData" id=2]
@@ -6,8 +6,11 @@
 [ext_resource path="res://fonts/8-BIT WONDER.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://tiles/tiles.tres" type="TileSet" id=5]
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sounds/music/menu_music.wav" type="AudioStream" id=7]
-[ext_resource path="res://sounds/sfx/button_click.wav" type="AudioStream" id=8]
+[ext_resource path="res://menus/grabber.png" type="Texture" id=7]
+[ext_resource path="res://menus/slider.png" type="Texture" id=8]
+[ext_resource path="res://menus/slider_fill.png" type="Texture" id=9]
+[ext_resource path="res://sounds/music/menu_music.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/sfx/button_click.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -38,6 +41,83 @@ use_mipmaps = true
 use_filter = false
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings", "font_data" ]
+
+[sub_resource type="StyleBoxTexture" id=4]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 0.625
+margin_right = 0.375
+margin_top = 1.375
+margin_bottom = 1.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "texture" ]
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 9 )
+region_rect = Rect2( 0, 0, 32, 16 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
 
 [node name="main_menu" type="Control"]
 anchor_left = 0.0
@@ -230,6 +310,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
+custom_icons/grabber_disabled = ExtResource( 7 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 5 )
 min_value = -55.0
 max_value = 30.0
 step = 1.0
@@ -244,6 +329,7 @@ scrollable = true
 tick_count = 0
 ticks_on_borders = true
 focus_mode = 2
+_sections_unfolded = [ "Custom Icons", "Custom Styles", "custom_styles/grabber_area", "custom_styles/grabber_disabled", "custom_styles/grabber_highlight", "custom_styles/slider" ]
 
 [node name="sfx_label" type="Label" parent="."]
 anchor_left = 0.0
@@ -285,6 +371,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
+custom_icons/grabber_disabled = ExtResource( 7 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 6 )
+custom_styles/grabber_area = SubResource( 7 )
 min_value = -75.0
 max_value = 30.0
 step = 1.0
@@ -299,9 +390,10 @@ scrollable = true
 tick_count = 0
 ticks_on_borders = true
 focus_mode = 2
+_sections_unfolded = [ "Custom Icons", "Custom Styles", "custom_styles/grabber_area", "custom_styles/slider" ]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
+stream = ExtResource( 10 )
 volume_db = -25.0
 pitch_scale = 1.0
 autoplay = true
@@ -310,7 +402,7 @@ mix_target = 0
 bus = "Music"
 
 [node name="click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+stream = ExtResource( 11 )
 volume_db = -20.0
 pitch_scale = 1.0
 autoplay = false
